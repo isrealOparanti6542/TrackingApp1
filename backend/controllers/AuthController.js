@@ -117,7 +117,7 @@ exports.getUser = async function (req, res) {
     }
 
     // Remove sensitive information like password from user
-    const { password, ...rest } = user.toJSON();
+    const { password, resetPasswordOtp, ...rest } = user.toJSON();
 
     return res.status(200).json(rest);
   } catch (error) {
