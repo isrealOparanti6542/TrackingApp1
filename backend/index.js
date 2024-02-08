@@ -15,8 +15,8 @@
   dotenv.config();
 
   // Connect to MongoDB
-  const mongoURI = 'mongodb://localhost:27017/trackingApp';
-  // const mongoURI =  "mongodb+srv://Isreal:oparanti@cluster0.pkhckh1.mongodb.net/trackingapp?retryWrites=true&w=majority";
+  // const mongoURI = 'mongodb://localhost:27017/trackingApp';
+  const mongoURI =  "mongodb+srv://Isreal:oparanti@cluster0.pkhckh1.mongodb.net/trackingapp?retryWrites=true&w=majority";
 
 
   mongoose.connect(mongoURI, {
