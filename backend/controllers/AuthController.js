@@ -103,7 +103,7 @@ exports.login = async function (req, res) {
 
 exports.getUser = async function (req, res) {
   const { username } = req.params;
-  console.log(username);
+   
 
   try {
     if (!username) {
@@ -121,22 +121,24 @@ exports.getUser = async function (req, res) {
 
     return res.status(200).json(rest);
   } catch (error) {
-    console.error(error);
+    
     return res.status(500).json({ error: "Internal Server Error" });
   }
 };
-  
+ 
 // Nodemailer transporter configuration
-const transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: "isrealopa@gmail.com",
-    pass: "qyqnnflaszxvmjtl"
-  },
-});
-
-// Route for handling password reset requests
 exports.passwordRecoveryEmail = async function (req, res) {
+  const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: process.env.EMAIL_USER,
+      pass: process.env.PASS
+    },
+  });
+  
+ 
+  
+  
   try {
     const { email } = req.body;
 
@@ -157,7 +159,7 @@ exports.passwordRecoveryEmail = async function (req, res) {
     user.resetPasswordOtp = resetOtp;
     user.resetPasswordExpiration = resetOtpExpiration;
     await user.save();
-  console.log(resetOtp)
+   
     // Compose the password reset email with the OTP
     const mailOptions = {
       from: process.env.EMAIL_USER,
@@ -171,7 +173,7 @@ exports.passwordRecoveryEmail = async function (req, res) {
 
     res.status(200).json({ message: 'Password reset instructions sent to your email' });
   } catch (error) {
-    console.error(error);
+    
     res.status(500).json({ error: 'Internal Server Error' });
   }
 };
@@ -209,7 +211,7 @@ const hashedPassword = await bcrypt.hash(newPassword, 10);
 
     res.status(200).json({ message: 'Password reset successful' });
   } catch (error) {
-    console.error(error);
+     
     res.status(500).json({ error: 'Internal Server Error' });
   }
 };
