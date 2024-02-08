@@ -9,7 +9,7 @@ router.post('/login', login);
 // router.post('/log-out', logOut);
 
 
-router.get('get-user/:username', getUser);
+router.get('/get-user/:username', getUser);
 
 router.get('/user/search-location', searchLocation);
 router.post('/user/active-route', createActiveRoute);
@@ -22,7 +22,7 @@ router.get('/user/route-histoty', getRouteHistory);
  
 
 router.post('/password-recovery', passwordRecoveryEmail);
-router.post('/verifyOTP', verifyOTP);
+// router.post('/verifyOTP', verifyOTP);
 
 router.post('/conversations', Conversation);
 router.post('/conversations/:userId', GetConversation);  
