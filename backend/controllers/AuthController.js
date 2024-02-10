@@ -94,7 +94,7 @@ exports.login = async function (req, res) {
       { expiresIn: '24h' }
     );
 
-    return res.status(200).json({ message: "Login Successful", token, userId: user._id });
+    return res.status(200).json({ message: "Login Successful", token, userId: user._id, username: user.username });
   } catch (error) {
     return res.status(500).json({ error: 'Login failed', message: error.message });
   }
